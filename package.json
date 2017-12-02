@@ -5,7 +5,7 @@
   "main": "neuron.js",
   "scripts": {
     "test": "\"\"",
-    "start": "nodemon neuron.js"
+    "start": "nodemon server.js"
   },
   "author": "Muthukumar",
   "license": "ISC",

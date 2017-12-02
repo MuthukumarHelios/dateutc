@@ -9,21 +9,18 @@ app.get(`/api/parsetime`, (req, res) => {
    
        
     //@{query Params}  
-    req.query.time = Number(req.query.time);
-    //  
+    req.query.time = Number(req.query.time);  
+    
     // req.query.time =  Date.now() - 24*60*60*1000
-
     //   req.query.time = Date.now();
+
  // @params {json Key vaue} Check it is present in json or not
 if(!json[`${req.query.tz}`]){ 
-
    return res.json({error:true, message: "please Provide a valid Time zone"});
 }
+
 // @params Json Value to format utc Value
         var utc_json_value = json[`${req.query.tz}`];
-
-
-      
       if(utc_json_value.substring(5,6) =='+')
       {
           console.log("add");
@@ -40,6 +37,16 @@ if(!json[`${req.query.tz}`]){
 
     console.log(mt.format('YYYY-MM-DD'),' ',mt.format('HH:MM:SS'));
               res.json(response_obj);
+});
+
+
+// Error Handler 
+app.use((req, res) => {
+    res.status(404).send({error:true, message: "Page Not Found"});
+});
+// server isssue
+app.use((req, res) => {
+    res.status(500).send({error:true, message: "Page Not Found"});
 });
 
 
